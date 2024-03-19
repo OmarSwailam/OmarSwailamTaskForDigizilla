@@ -1,0 +1,7 @@
+<odoo>
+    <menuitem id="digizilla.root_menu" name="Digizilla">
+        <menuitem id="digizilla.level_menu" name="users">
+            <menuitem id="digizilla.model_menu_action" action="digizilla_action" />
+        </menuitem>
+    </menuitem>
+</odoo>

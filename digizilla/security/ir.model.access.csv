@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+digizilla.access_digizilla,access_digizilla,digizilla.model_digizilla,base.group_user,1,1,1,1
+digizilla.access_tag,access_tag,digizilla.model_tag,base.group_user,1,1,1,1
+digizilla.access_logger,access_logger,digizilla.model_logger,base.group_user,1,1,1,1

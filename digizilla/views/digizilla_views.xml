@@ -1,0 +1,144 @@
+<odoo>
+    <record id="view_digizilla_form" model="ir.ui.view">
+        <field name="name">digizilla.form</field>
+        <field name="model">digizilla</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="gender"/>
+                        <field name="country"/>
+                        <field name="joining_date"/>
+                        <field name="company_id"/>
+                        <field name="tags"/>
+                    </group>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                        <page string="Comments">
+                            <field name="comments"/>
+                        </page>
+                    </notebook>
+                    <group>
+                        <field name="logger_ids">
+                            <tree string="Logger">
+                                <field name="field_name"/>
+                                <field name="old_value"/>
+                                <field name="new_value"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_digizilla_list" model="ir.ui.view">
+        <field name="name">digizilla.list</field>
+        <field name="model">digizilla</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="country"/>
+                <field name="joining_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="digizilla_kanban_view" model="ir.ui.view">
+        <field name="name">digizilla.kanban</field>
+        <field name="model">digizilla</field>
+        <field name="arch" type="xml">
+            <kanban class="o_res_partner_kanban">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_card_content">
+                            <div class="o_kanban_primary">
+                                <div class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </div>
+                                <div class="o_kanban_record_subtitle">
+                                    <field name="gender"/>
+                                </div>
+                                <div class="o_kanban_record_subtitle">
+                                    <field name="country"/>
+                                </div>
+                                <div class="o_kanban_record_subtitle">
+                                    <field name="joining_date"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <record id="digizilla_action" model="ir.actions.act_window">
+        <field name="name">Users</field>
+        <field name="res_model">digizilla</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+
+    <record id="report_digizilla" model="ir.actions.report">
+        <field name="name">digizilla report</field>
+        <field name="model">digizilla</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">digizilla.report_digizilla_template</field>
+        <field name="report_file">digizilla.report_digizilla_template</field>
+        <field name="binding_model_id" ref="model_digizilla"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_digizilla_template">
+        <t t-foreach="docs" t-as="r">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>
+                            <span t-field="r.name"/>
+                        </h2>
+                        <div>
+                            <strong>gender:</strong>
+                            <span t-field="r.gender"/>
+                        </div>
+                        <div>
+                            <strong>country:</strong>
+                            <span t-field="r.country"/>
+                        </div>
+                        <div>
+                            <strong>joining_date:</strong>
+                            <span t-field="r.joining_date"/>
+                        </div>
+                        <div>
+                            <strong>tags:</strong>
+                            <span t-field="r.tags"/>
+                        </div>
+                        <div>
+                            <strong>customers:</strong>
+                            <span t-field="r.customers"/>
+                        </div>
+                        <div>
+                            <strong>company_id:</strong>
+                            <span t-field="r.company_id"/>
+                        </div>
+                        <div>
+                            <strong>notes:</strong>
+                            <span t-field="r.notes"/>
+                        </div>
+                        <div>
+                            <strong>country:</strong>
+                            <span t-field="r.comments"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
