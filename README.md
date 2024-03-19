@@ -17,6 +17,12 @@
 ### did not complete (tried my best)
 1. Hide the create button from the form view using javascript.
 
+### references used
+* https://www.odoo.com/documentation/17.0/developer/tutorials/getting_started.html
+* https://www.odoo.com/documentation/17.0/developer/tutorials/pdf_reports.html
+* https://www.odoo.com/forum/help-1
+
+
 ### important notes
 the job application mentions the following
 * Contribute to the development of web applications using frameworks like Django or Flask
